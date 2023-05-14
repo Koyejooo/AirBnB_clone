@@ -17,9 +17,6 @@ class TestBaseModel(unittest.TestCase):
                 "<class 'models.base_model.BaseModel'>")
         self.assertIsInstance(test_city, BaseModel)
         self.assertTrue(issubclass(type(test_city), BaseModel))
-        self.assertEqual(test_city.id, uuid4())
-        self.assertEqual(test_city.created_at, datetime.now())
-        self.assertEqual(test_city.updated_at, datetime.now())
 
     def test_init_with_no_args(self):
         """Test object instantiation with no arguments."""
@@ -80,7 +77,7 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict_with_no_args(self):
         """Test to_dict method with no argument"""
         with self.assertRaises(TypeError) as e:
-            BaseModel.to_dict(self, "Abuja")
+            BaseModel.to_dict()
         err_msg = "to_dict() missing 1 required positional argument: 'self'"
         self.assertEqual(str(e.exception), err_msg)
 
